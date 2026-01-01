@@ -34,7 +34,8 @@ pipeline {
       steps {
         echo 'Downloading infrastructure code'
         git branch: 'main',
-            url: 'https://github.com/Daniel18-dan/terraform-jenkins-task6.git'
+            url: 'https://github.com/Daniel18-dan/terraform-jenkins-task6.git',
+            credentialsId: 'github-token'
       }
     }
 
