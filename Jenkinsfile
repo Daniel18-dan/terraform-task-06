@@ -13,7 +13,7 @@ pipeline {
 
     choice(
       name: 'INSTANCE_TYPE',
-      choices: ['t2.micro'],
+      choices: ['t3.micro'],
       description: 'EC2 instance type'
     )
 
