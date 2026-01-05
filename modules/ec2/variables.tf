@@ -1,24 +1,16 @@
-variable "ami_id" {
-  description = "AMI ID used to launch the EC2 instance"
-  type        = string
-}
+resource "aws_instance" "this" {
+  ami                         = var.ami_id
+  instance_type               = var.instance_type
+  subnet_id                   = var.subnet_id
+  vpc_security_group_ids       = var.security_group_ids
+  associate_public_ip_address = false
 
-variable "instance_type" {
-  description = "EC2 instance type (example: t2.micro)"
-  type        = string
-}
+  root_block_device {
+    volume_size = var.volume_size
+  }
 
-variable "environment" {
-  description = "Environment name (DEV / QA / PROD)"
-  type        = string
-}
-
-variable "owner" {
-  description = "Owner of the resource"
-  type        = string
-}
-
-variable "name" {
-  description = "Name tag for the EC2 instance"
-  type        = string
+  tags = {
+    Environment = var.environment
+    Owner       = var.owner
+  }
 }
